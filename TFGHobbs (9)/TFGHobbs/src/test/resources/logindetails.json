@@ -1,0 +1,15 @@
+{
+"User_Name":"storefront",
+"Password":"tfg2019",
+"Browser":"Chrome",
+"Chrome":"true",
+"Firefox":"true",
+"Edge":"false",
+"Emulation":"false",
+"Device":"Galaxy S5",
+"Headless":"false",
+"UK_URL":"https://dev.hobbs.com/",
+"US_URL":"https://dev.hobbs.com/us/",
+"AUS_URL":"https://dev.hobbs.com/au/",
+"ROW_URL":"https://dev.hobbs.com/row/"
+}	

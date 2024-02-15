@@ -1,0 +1,170 @@
+package pageobjects;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
+public class PDP {
+
+	WebDriver driver;
+	Actions actions;
+
+	public PDP(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(how = How.XPATH, using = "(//span[text()='UK Size']//following-sibling::span)[1]")
+	public WebElement productSizeSelectedInPDP;
+
+	@FindBy(how = How.CSS, using = "button.add-to-cart.btn.btn-secondary")
+	public WebElement addToBagInPDP;
+
+	@FindBy(how = How.XPATH, using = "//a[@title='View Bag']")
+	public WebElement viewBag;
+
+   //@FindBy(how = How.XPATH, using = "//div[@id='miniCart']//a[contains(text(),'View Bag & Checkout')]")
+	//@FindBy(how = How.XPATH, using = "//div[@id='miniCart']")
+   @FindBy(how = How.XPATH, using = "//a[@class='minicart-link ']")
+	public WebElement viewBagAndCheckout;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-card__details d-flex flex-row ']//span[@class='product-card__content__heading']")
+	public WebElement productnameinbag;
+
+	public WebElement ProductNameInPdp(String productName) {
+		return driver.findElement(By.xpath("//h1//span[contains(text(),'" + productName + "')]"));
+	}
+
+	public WebElement ProductSizeInPdp(String size) {
+		return driver.findElement(By.xpath("//a[@data-attr='size']//span[text()='" + size + "']"));
+	}
+
+	public WebElement ProductSizeSelectedInPdp(String size) {
+		return driver.findElement(By.xpath("//span[text()='UK Size']//following-sibling::span[text()='" + size + "']"));
+	}
+
+	public String ProductNameInBag(String name) {
+		actions = new Actions(driver);
+		actions.moveToElement(viewBag).build().perform();
+		System.out.println("Product name in Bag: " + ProductNameInPdp(name).getText());
+		return ProductNameInPdp(name).getText();
+	}
+
+	// .......................p2_all__desktop_pdp...................................................
+
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'col-12 col-lg-8 product-breadcrumb product-detail__nav-row__breadcrumbs')]//child::li[2]/a")
+	public WebElement Breadscrummaincategory;
+
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'col-12 col-lg-8 product-breadcrumb product-detail__nav-row__breadcrumbs')]//child::li[1]/a")
+	public WebElement BreadscrumHome;
+
+	@FindBy(how = How.XPATH, using = "//*[contains(@id,'pdp')]/div[1]/a[1]/div/div/img")
+	public WebElement largeImage;
+
+	@FindBy(how = How.XPATH, using = "//span[@class='lg-close lg-icon']")
+	public WebElement ImageClose;
+
+	@FindBy(how = How.XPATH, using = "//button[@class='btn btn-secondary add-to-wish-list']//i[@class='font-icon icon-heart2 wishlist-icon wishlist-icon--inactive']")
+	public WebElement wishlistButton;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='col-12 product-detail__details-section col-lg-4']//h1[@class='product-detail__product-name mb-1']")
+	public WebElement productname1;
+
+	@FindBy(how = How.XPATH, using = "//a[@class='wishlist-link']")
+	public WebElement wishlistIcon;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='pdp-link']")
+	public WebElement productname2;
+
+	@FindBy(how = How.XPATH, using = "//button[@class='btn btn-secondary add-to-wish-list active']")
+	public WebElement wishlistButtonRemove;
+
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Removed from Wishlist')]")
+	public WebElement wishlistmsg;
+
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'AVAILABILITY')]")
+	public WebElement plpPage;
+
+	@FindBy(how = How.XPATH, using = "//button[@class='add-to-cart btn btn-secondary']")
+	public WebElement pdpPage;
+
+	@FindBy(how = How.XPATH, using = "//*[@id=\"headingFour\"]/h2/button")
+	public WebElement reviewButton;
+
+	@FindBy(how = How.XPATH, using = "//h2[@class='product-detail__rating__heading flyout__heading']")
+	public WebElement panelReview;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__rating__content']//i[@class='font-icon icon-cross product-detail__rating__close-icon flyout__close-icon']")
+	public WebElement reviewCloseBtn;
+
+	@FindBy(how = How.XPATH, using = "//div[@id='collapseFour']//div[@class='modal-background show']")
+	public WebElement reviewClickOut;
+
+	// ...........................p3_all_desktop_pdp.................................................................
+
+	public WebElement colorText(int value) {
+		return driver.findElement(By.xpath("//a[@data-index='" + value + ".0']"));
+
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__attribute__values container px-0 mx-0 mw-100']//img[1]")
+	public WebElement colorSwatch;
+
+	public List<WebElement> color() {
+		return driver.findElements(
+				By.xpath("//div[@class='product-detail__attribute__values container px-0 mx-0 mw-100']//img"));
+
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[@class='col-8 align-self-center product-detail__attribute__label--inner']//span[@class='product-detail__attribute__display-value']")
+	public WebElement colorSelected;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__rating__status-row row no-gutters']//select[@id='sort']")
+	public WebElement reviewSortOption;
+
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Load More')]")
+	public WebElement loadmoreButton;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__rating__status--paging align-self-center col-12 col-sm-6']//span")
+	public WebElement loadedproductCount;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='py-1 position-relative pl-0 size-guide-link']//a[contains(text(),'Size guide')]")
+	public WebElement sizeGuide;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__size-chart__content text-center']//h2[contains(text(),'Size Chart')]")
+	public WebElement displaysizeChart;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__size-chart__content text-center']//i[@class='font-icon icon-cross flyout__close-icon']")
+	public WebElement sizepanelClose;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='card product-detail__delivery']//button[contains(text(),'Delivery & Returns')]")
+	public WebElement deliveryReturns;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__delivery__content']//a[@class='product-detail__delivery__close d-inline flyout__close-icon float-right']//i[@class='font-icon icon-cross product-detail__delivery__close-icon']")
+	public WebElement deliveryReturnClose;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__delivery__content']//h2[contains(text(),'Delivery & Returns')]")
+	public WebElement deliveryReturnPanel;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-detail__tile-row-container col-12 px-0']//span[contains(text(),'You may also like')]//following::div[@class='row product-detail__tile-row']//following::img[1]")
+	public WebElement recommendedProduct;
+	
+	
+	@FindBy(how = How.XPATH, using = "(//input[@name='q'])[1]")
+	public WebElement searchbar;
+
+	
+	@FindBy(how = How.XPATH, using = "(//button[@class='btn btn-link search-button py-1 d-inline-block position-absolute search-icon-wrapper']//i)[1]")
+	public WebElement searchIcon;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='filters']//span[contains(text(),'Hide Filters')]")
+	public WebElement plphidefilterText;
+
+}

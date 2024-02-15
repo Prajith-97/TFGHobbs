@@ -1,0 +1,108 @@
+package pageobjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
+public class Basket {
+
+	WebDriver driver;
+
+	public Basket(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[@class='cart cart-page']//span[contains(text(),'Your Basket')]")
+	public WebElement yourBasket;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='checkout-and-applepay']//a[contains(text(),'Checkout Securely')]")
+	public WebElement checkoutSecurelyBtn;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='minicart-total']/span")
+	public WebElement minicartTotal;
+
+	// ...............p2_all_Basket..............................................................
+
+	@FindBy(how = How.XPATH, using = "//div[@class='image-container pdp-link']")
+	public WebElement pdtWishlist;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='form-group form-row form-group--select has-float-label form-row-select quantity-form w-50 mr-2 mr-md-0 w-md-100']//select")
+	public WebElement quantity;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='form-group form-row form-group--select has-float-label form-row-select quantity-form w-50 mr-2 mr-md-0 w-md-100']//select[@id='lineItemQuantity']")
+	public WebElement quantityDropdown;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-card__price item-total-7961666eadb00b322b1c765537']//span[@class='sales pricing line-item-total-price-amount item-total-null has-strike-through']")
+	public WebElement Amount;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='order-subtotal__value col-4']//following::p[@class='text-right sub-total']")
+	public WebElement subtotal;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='form-group form-row form-group--select has-float-label form-row-select size-form w-50 w-md-100']//select")
+	public WebElement size;
+
+	@FindBy(how = How.XPATH, using = "//u[contains(text(),'Remove')][1]")
+	public WebElement removeProduct;
+
+	@FindBy(how = How.XPATH, using = "//u[contains(text(),'Move to Wishlist')][1]")
+	public WebElement movetowishlist;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='cart-promo-section-input']//input")
+	public WebElement inputPromocode;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='form-group form-row form-group--text has-float-label form-row-input mb-0']//input")
+	public WebElement promocodeAfterEntry;
+
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Apply')]")
+	public WebElement applyButton;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='cart-promo-section-input']//div[@class='coupon-error m-0 small text-danger']//span[@class='coupon-error-message']")
+	public WebElement errormsg;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='coupon-code col-12 pt-0']//span")
+	public WebElement codeApplied;
+
+	@FindBy(how = How.XPATH, using = "//a[@class='wishlist-link']")
+	public WebElement wishlistIcon;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='product-tile__name']//div[@class='pdp-link']//a")
+	public WebElement wishlistProduct;
+
+	@FindBy(how = How.XPATH, using = "//h5[@class='cart-header my-4']//span[@class='text-normal number-of-items']")
+	public WebElement bagcount;
+
+	// .....................p3_all_basket..............................................
+
+	@FindBy(how = How.XPATH, using = "//h5[@class='product-recommendations__heading pl-0 heading']//parent::div")
+	public WebElement recommendations;
+
+	@FindBy(how = How.XPATH, using = "//a[@class='country-selector__current']//span[@class='country-selector__current__selection d-inline-block'][1]")
+	public WebElement countrySelector;
+
+	@FindBy(how = How.XPATH, using = "//form[@class='country-selector__form text-left  small-margin']//label[contains(text(),'Location')]")
+	public WebElement countryPanel;
+
+	public WebElement CountryInDropDown(String country) {
+		return driver.findElement(By.xpath("//div[@data-value='" + country + "']"));
+	}
+
+	@FindBy(how = How.ID, using = "countryDropdown")
+	public WebElement countrySelectorDropDown;
+
+	@FindBy(how = How.XPATH, using = "//div[@id='countrySelector']//button")
+	public WebElement submitBtn;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='header-element__icon minicart-icon__container']//i[@class='font-icon icon-bag minicart-icon']")
+	public WebElement bagIcon;
+
+	@FindBy(how = How.XPATH, using = "//select[@id='lineItemSize']")
+	public WebElement size1;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='text-center mb-3 mx-auto']//a[contains(text(),'Start Shopping')]")
+	public WebElement emptyBasket;
+
+}
